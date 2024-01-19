@@ -3,6 +3,7 @@ import UIKit
 final class DefaultMainView: UIViewController {
     
     //MARK: - propertis
+    var viewModal: MainViewModal!
     private let tableView = UITableView()
     private var movies = [Movie]() {
         didSet {
@@ -16,21 +17,18 @@ final class DefaultMainView: UIViewController {
         setupTableView()
         setupConstreints()
         setupUI()
+        configBinding()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadMovies()
+        viewModal.loadMovies()
     }
     
-    //MARK: - load Movie
-    private func loadMovies() {
-        let operationResult = CoreDataManager.instance.loadMovie()
-        switch operationResult {
-        case .success(let movie):
-            self.movies = movie
-        case .failure(let failure):
-            print(failure)
+    //MARK: - binbing
+    private func configBinding() {
+        viewModal.setupMovie = { [ weak self] movie in
+            self?.movies = movie
         }
     }
     
@@ -66,16 +64,15 @@ final class DefaultMainView: UIViewController {
     //MARK: - extension tableView
 extension DefaultMainView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CastomTableViewCell", for: indexPath) as? CastomTableViewCell {
-            
+            let _ = movies[indexPath.row]
             return cell
         }
         return UITableViewCell()
     }
-    
     
 }

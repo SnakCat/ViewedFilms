@@ -14,8 +14,8 @@
 		FFD2C6E72B5A701800714A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD2C6E52B5A701800714A14 /* LaunchScreen.storyboard */; };
 		FFD2C6F12B5A79B700714A14 /* MianView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6F02B5A79B700714A14 /* MianView.swift */; };
 		FFD2C6F32B5A7BC600714A14 /* CastomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6F22B5A7BC600714A14 /* CastomTableViewCell.swift */; };
-		FFD2C6F52B5A7D3B00714A14 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6F42B5A7D3A00714A14 /* ExtensionUIView.swift */; };
-		FFD2C6F72B5A825E00714A14 /* MainModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6F62B5A825E00714A14 /* MainModalView.swift */; };
+		FFD2C6F52B5A7D3B00714A14 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6F42B5A7D3A00714A14 /* UIView + Extension.swift */; };
+		FFD2C6F72B5A825E00714A14 /* MainViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6F62B5A825E00714A14 /* MainViewModal.swift */; };
 		FFD2C7012B5AA1C800714A14 /* manrope-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFD2C6FB2B5AA1C700714A14 /* manrope-semibold.ttf */; };
 		FFD2C7022B5AA1C800714A14 /* manrope-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFD2C6FC2B5AA1C700714A14 /* manrope-bold.ttf */; };
 		FFD2C7032B5AA1C800714A14 /* manrope-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFD2C6FD2B5AA1C700714A14 /* manrope-light.ttf */; };
@@ -35,8 +35,8 @@
 		FFD2C6E82B5A701800714A14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFD2C6F02B5A79B700714A14 /* MianView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MianView.swift; sourceTree = "<group>"; };
 		FFD2C6F22B5A7BC600714A14 /* CastomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastomTableViewCell.swift; sourceTree = "<group>"; };
-		FFD2C6F42B5A7D3A00714A14 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
-		FFD2C6F62B5A825E00714A14 /* MainModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModalView.swift; sourceTree = "<group>"; };
+		FFD2C6F42B5A7D3A00714A14 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		FFD2C6F62B5A825E00714A14 /* MainViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModal.swift; sourceTree = "<group>"; };
 		FFD2C6FB2B5AA1C700714A14 /* manrope-semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-semibold.ttf"; sourceTree = "<group>"; };
 		FFD2C6FC2B5AA1C700714A14 /* manrope-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-bold.ttf"; sourceTree = "<group>"; };
 		FFD2C6FD2B5AA1C700714A14 /* manrope-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-light.ttf"; sourceTree = "<group>"; };
@@ -76,6 +76,8 @@
 		FFD2C6D62B5A701600714A14 /* ViewedFilms */ = {
 			isa = PBXGroup;
 			children = (
+				FFD2C70E2B5AD27F00714A14 /* CoreDataManager */,
+				FFD2C70D2B5AD1BB00714A14 /* Extensions */,
 				FFD2C6FA2B5AA1B300714A14 /* Fonts */,
 				FFD2C6EE2B5A735300714A14 /* MainScreen */,
 				FFD2C6D72B5A701600714A14 /* AppDelegate.swift */,
@@ -84,8 +86,6 @@
 				FFD2C6E52B5A701800714A14 /* LaunchScreen.storyboard */,
 				FFD2C6E82B5A701800714A14 /* Info.plist */,
 				FFD2C6E02B5A701600714A14 /* ViewedFilms.xcdatamodeld */,
-				FFD2C6F42B5A7D3A00714A14 /* ExtensionUIView.swift */,
-				FFD2C70B2B5AB9CF00714A14 /* CoreDataManager.swift */,
 			);
 			path = ViewedFilms;
 			sourceTree = "<group>";
@@ -94,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				FFD2C6F02B5A79B700714A14 /* MianView.swift */,
-				FFD2C6F62B5A825E00714A14 /* MainModalView.swift */,
+				FFD2C6F62B5A825E00714A14 /* MainViewModal.swift */,
 				FFD2C6F22B5A7BC600714A14 /* CastomTableViewCell.swift */,
 			);
 			path = MainScreen;
@@ -111,6 +111,22 @@
 				FFD2C7002B5AA1C800714A14 /* manrope-thin.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FFD2C70D2B5AD1BB00714A14 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FFD2C6F42B5A7D3A00714A14 /* UIView + Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FFD2C70E2B5AD27F00714A14 /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				FFD2C70B2B5AB9CF00714A14 /* CoreDataManager.swift */,
+			);
+			path = CoreDataManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,11 +205,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD2C6F52B5A7D3B00714A14 /* ExtensionUIView.swift in Sources */,
+				FFD2C6F52B5A7D3B00714A14 /* UIView + Extension.swift in Sources */,
 				FFD2C6F32B5A7BC600714A14 /* CastomTableViewCell.swift in Sources */,
 				FFD2C6D82B5A701600714A14 /* AppDelegate.swift in Sources */,
 				FFD2C6F12B5A79B700714A14 /* MianView.swift in Sources */,
-				FFD2C6F72B5A825E00714A14 /* MainModalView.swift in Sources */,
+				FFD2C6F72B5A825E00714A14 /* MainViewModal.swift in Sources */,
 				FFD2C6DA2B5A701600714A14 /* SceneDelegate.swift in Sources */,
 				FFD2C70C2B5AB9CF00714A14 /* CoreDataManager.swift in Sources */,
 				FFD2C6E22B5A701600714A14 /* ViewedFilms.xcdatamodeld in Sources */,

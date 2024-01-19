@@ -22,6 +22,11 @@ class CastomTableViewCell: UITableViewCell {
         fatalError()
     }
     
+    //MARK: - configure Entity
+    func configureEntity(_ movie: Movie) {
+        
+    }
+    
     //MARK: - add subView Cell
     private func addSubViewCell() {
         contentView.addSubview(contenerView)
@@ -76,16 +81,10 @@ class CastomTableViewCell: UITableViewCell {
         contenerView.layer.shadowRadius = 16
         contenerView.layer.shadowOpacity = 0.10
         
-        movieImageView.backgroundColor = .red
-        
-        nameLabel.text = "Spider- Man: No Way Home"
         nameLabel.textAlignment = .center
         nameLabel.numberOfLines = .zero
         nameLabel.font = UIFont(name: "manrope-regular", size: 18)
         
-        gradeLabel.text = "8.9/10"
         gradeLabel.textAlignment = .center
-       
     }
-
 }
