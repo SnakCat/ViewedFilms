@@ -16,6 +16,7 @@ final class DefaultMainView: UIViewController {
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(CastomTableViewCell.self, forCellReuseIdentifier: "CastomTableViewCell")
     }
     //MARK: - constreints
     private func setupConstreints() {
@@ -29,10 +30,11 @@ final class DefaultMainView: UIViewController {
     }
     //MARK: - UI
     private func setupUI() {
-        view.backgroundColor = .backgroundMainView
+        tableView.backgroundColor = .backgroundMainView
         title = "My Movie List"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add)
+        tableView.separatorStyle = .none
     }
 }
     //MARK: - extension tableView
@@ -42,7 +44,11 @@ extension DefaultMainView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CastomTableViewCell", for: indexPath) as? CastomTableViewCell {
+            
+            return cell
+        }
+        return UITableViewCell()
     }
     
     
