@@ -25,9 +25,9 @@ final class DefaultMainView: UIViewController {
         viewModal.loadMovies()
     }
     
-    //MARK: - binbing
+    //MARK: - data binbing
     private func configBinding() {
-        viewModal.setupMovie = { [ weak self] movie in
+        viewModal.setupMovie = { [ weak self ] movie in
             self?.movies = movie
         }
     }
@@ -56,8 +56,12 @@ final class DefaultMainView: UIViewController {
         tableView.backgroundColor = .backgroundMainView
         title = "My Movie List"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: UIAction(handler: { [ weak self ] _ in
+            let addNewView = DefaultAddNewFilmView()
+            self?.navigationController?.pushViewController(addNewView, animated: true)
+        }))
         tableView.separatorStyle = .none
+        navigationItem.backButtonTitle = ""
     }
 }
 
@@ -69,10 +73,15 @@ extension DefaultMainView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CastomTableViewCell", for: indexPath) as? CastomTableViewCell {
-            let _ = movies[indexPath.row]
+            let movie = movies[indexPath.row]
+            cell.configureEntity(movie: movie)
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
 }

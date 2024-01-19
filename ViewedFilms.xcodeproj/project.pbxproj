@@ -23,6 +23,9 @@
 		FFD2C7052B5AA1C800714A14 /* manrope-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFD2C6FF2B5AA1C800714A14 /* manrope-regular.ttf */; };
 		FFD2C7062B5AA1C800714A14 /* manrope-thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFD2C7002B5AA1C800714A14 /* manrope-thin.ttf */; };
 		FFD2C70C2B5AB9CF00714A14 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C70B2B5AB9CF00714A14 /* CoreDataManager.swift */; };
+		FFD2C7132B5AEBD400714A14 /* AddNewFilmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C7122B5AEBD400714A14 /* AddNewFilmView.swift */; };
+		FFD2C7152B5AEBE700714A14 /* FullInfoFilmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C7142B5AEBE700714A14 /* FullInfoFilmView.swift */; };
+		FFD2C7192B5B0D9C00714A14 /* AddNewFilmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C7182B5B0D9C00714A14 /* AddNewFilmViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		FFD2C6FF2B5AA1C800714A14 /* manrope-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-regular.ttf"; sourceTree = "<group>"; };
 		FFD2C7002B5AA1C800714A14 /* manrope-thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-thin.ttf"; sourceTree = "<group>"; };
 		FFD2C70B2B5AB9CF00714A14 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		FFD2C7122B5AEBD400714A14 /* AddNewFilmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewFilmView.swift; sourceTree = "<group>"; };
+		FFD2C7142B5AEBE700714A14 /* FullInfoFilmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoFilmView.swift; sourceTree = "<group>"; };
+		FFD2C7182B5B0D9C00714A14 /* AddNewFilmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewFilmViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,10 +82,10 @@
 		FFD2C6D62B5A701600714A14 /* ViewedFilms */ = {
 			isa = PBXGroup;
 			children = (
+				FFD2C70F2B5AEAB300714A14 /* Screens */,
 				FFD2C70E2B5AD27F00714A14 /* CoreDataManager */,
 				FFD2C70D2B5AD1BB00714A14 /* Extensions */,
 				FFD2C6FA2B5AA1B300714A14 /* Fonts */,
-				FFD2C6EE2B5A735300714A14 /* MainScreen */,
 				FFD2C6D72B5A701600714A14 /* AppDelegate.swift */,
 				FFD2C6D92B5A701600714A14 /* SceneDelegate.swift */,
 				FFD2C6E32B5A701800714A14 /* Assets.xcassets */,
@@ -127,6 +133,33 @@
 				FFD2C70B2B5AB9CF00714A14 /* CoreDataManager.swift */,
 			);
 			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
+		FFD2C70F2B5AEAB300714A14 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				FFD2C6EE2B5A735300714A14 /* MainScreen */,
+				FFD2C7102B5AEADF00714A14 /* AddNewScreens */,
+				FFD2C7112B5AEB6700714A14 /* FullInfoFilm */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		FFD2C7102B5AEADF00714A14 /* AddNewScreens */ = {
+			isa = PBXGroup;
+			children = (
+				FFD2C7122B5AEBD400714A14 /* AddNewFilmView.swift */,
+				FFD2C7182B5B0D9C00714A14 /* AddNewFilmViewModel.swift */,
+			);
+			path = AddNewScreens;
+			sourceTree = "<group>";
+		};
+		FFD2C7112B5AEB6700714A14 /* FullInfoFilm */ = {
+			isa = PBXGroup;
+			children = (
+				FFD2C7142B5AEBE700714A14 /* FullInfoFilmView.swift */,
+			);
+			path = FullInfoFilm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +243,10 @@
 				FFD2C6D82B5A701600714A14 /* AppDelegate.swift in Sources */,
 				FFD2C6F12B5A79B700714A14 /* MianView.swift in Sources */,
 				FFD2C6F72B5A825E00714A14 /* MainViewModal.swift in Sources */,
+				FFD2C7192B5B0D9C00714A14 /* AddNewFilmViewModel.swift in Sources */,
 				FFD2C6DA2B5A701600714A14 /* SceneDelegate.swift in Sources */,
+				FFD2C7132B5AEBD400714A14 /* AddNewFilmView.swift in Sources */,
+				FFD2C7152B5AEBE700714A14 /* FullInfoFilmView.swift in Sources */,
 				FFD2C70C2B5AB9CF00714A14 /* CoreDataManager.swift in Sources */,
 				FFD2C6E22B5A701600714A14 /* ViewedFilms.xcdatamodeld in Sources */,
 			);
