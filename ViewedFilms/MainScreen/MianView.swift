@@ -1,8 +1,14 @@
 import UIKit
 
 final class DefaultMainView: UIViewController {
+    
     //MARK: - propertis
     private let tableView = UITableView()
+    private var movies = [Movie]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     //MARK: - life cycle
     override func viewDidLoad() {
@@ -11,6 +17,23 @@ final class DefaultMainView: UIViewController {
         setupConstreints()
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadMovies()
+    }
+    
+    //MARK: - load Movie
+    private func loadMovies() {
+        let operationResult = CoreDataManager.instance.loadMovie()
+        switch operationResult {
+        case .success(let movie):
+            self.movies = movie
+        case .failure(let failure):
+            print(failure)
+        }
+    }
+    
     //MARK: - setup tableView
     private func setupTableView() {
         view.addSubview(tableView)
@@ -18,6 +41,7 @@ final class DefaultMainView: UIViewController {
         tableView.delegate = self
         tableView.register(CastomTableViewCell.self, forCellReuseIdentifier: "CastomTableViewCell")
     }
+    
     //MARK: - constreints
     private func setupConstreints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +52,7 @@ final class DefaultMainView: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
     //MARK: - UI
     private func setupUI() {
         tableView.backgroundColor = .backgroundMainView
@@ -37,6 +62,7 @@ final class DefaultMainView: UIViewController {
         tableView.separatorStyle = .none
     }
 }
+
     //MARK: - extension tableView
 extension DefaultMainView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -22,6 +22,7 @@
 		FFD2C7042B5AA1C800714A14 /* manrope-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFD2C6FE2B5AA1C700714A14 /* manrope-medium.ttf */; };
 		FFD2C7052B5AA1C800714A14 /* manrope-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFD2C6FF2B5AA1C800714A14 /* manrope-regular.ttf */; };
 		FFD2C7062B5AA1C800714A14 /* manrope-thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFD2C7002B5AA1C800714A14 /* manrope-thin.ttf */; };
+		FFD2C70C2B5AB9CF00714A14 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C70B2B5AB9CF00714A14 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		FFD2C6FE2B5AA1C700714A14 /* manrope-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-medium.ttf"; sourceTree = "<group>"; };
 		FFD2C6FF2B5AA1C800714A14 /* manrope-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-regular.ttf"; sourceTree = "<group>"; };
 		FFD2C7002B5AA1C800714A14 /* manrope-thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "manrope-thin.ttf"; sourceTree = "<group>"; };
+		FFD2C70B2B5AB9CF00714A14 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				FFD2C6E82B5A701800714A14 /* Info.plist */,
 				FFD2C6E02B5A701600714A14 /* ViewedFilms.xcdatamodeld */,
 				FFD2C6F42B5A7D3A00714A14 /* ExtensionUIView.swift */,
+				FFD2C70B2B5AB9CF00714A14 /* CoreDataManager.swift */,
 			);
 			path = ViewedFilms;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				FFD2C6F12B5A79B700714A14 /* MianView.swift in Sources */,
 				FFD2C6F72B5A825E00714A14 /* MainModalView.swift in Sources */,
 				FFD2C6DA2B5A701600714A14 /* SceneDelegate.swift in Sources */,
+				FFD2C70C2B5AB9CF00714A14 /* CoreDataManager.swift in Sources */,
 				FFD2C6E22B5A701600714A14 /* ViewedFilms.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

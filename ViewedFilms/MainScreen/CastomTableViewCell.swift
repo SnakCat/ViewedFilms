@@ -1,6 +1,7 @@
 import UIKit
 
 class CastomTableViewCell: UITableViewCell {
+    
     //MARK: - propertis
     private let contenerView = UIView()
     private let movieImageView = UIImageView()
@@ -20,12 +21,14 @@ class CastomTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
     //MARK: - add subView Cell
     private func addSubViewCell() {
         contentView.addSubview(contenerView)
         contenerView.addSubviews(movieImageView, infoView)
         infoView.addSubviews(nameLabel, gradeLabel)
     }
+    
     //MARK: - constreints
     private func setupConstreints() {
         contenerView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,6 +66,7 @@ class CastomTableViewCell: UITableViewCell {
             gradeLabel.bottomAnchor.constraint(equalTo: infoView.bottomAnchor, constant: -50)
         ])
     }
+    
     //MARK: - UI
     private func setupUI() {
         contentView.backgroundColor = .backgroundMainView
