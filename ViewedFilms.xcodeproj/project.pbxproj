@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF5FAF7D2B5E8C43002DA81F /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FAF7C2B5E8C43002DA81F /* UIStackView + Extension.swift */; };
 		FFD2C6D82B5A701600714A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6D72B5A701600714A14 /* AppDelegate.swift */; };
 		FFD2C6DA2B5A701600714A14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6D92B5A701600714A14 /* SceneDelegate.swift */; };
 		FFD2C6E22B5A701600714A14 /* ViewedFilms.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6E02B5A701600714A14 /* ViewedFilms.xcdatamodeld */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF5FAF7C2B5E8C43002DA81F /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		FFD2C6D42B5A701600714A14 /* ViewedFilms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewedFilms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD2C6D72B5A701600714A14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFD2C6D92B5A701600714A14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				FFD2C6F42B5A7D3A00714A14 /* UIView + Extension.swift */,
+				FF5FAF7C2B5E8C43002DA81F /* UIStackView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				FFD2C6F52B5A7D3B00714A14 /* UIView + Extension.swift in Sources */,
 				FFD2C6F32B5A7BC600714A14 /* CastomTableViewCell.swift in Sources */,
 				FFD2C6D82B5A701600714A14 /* AppDelegate.swift in Sources */,
+				FF5FAF7D2B5E8C43002DA81F /* UIStackView + Extension.swift in Sources */,
 				FFD2C6F12B5A79B700714A14 /* MianView.swift in Sources */,
 				FFD2C6F72B5A825E00714A14 /* MainViewModal.swift in Sources */,
 				FFD2C7192B5B0D9C00714A14 /* AddNewFilmViewModel.swift in Sources */,
