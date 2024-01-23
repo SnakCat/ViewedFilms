@@ -4,7 +4,7 @@ import PhotosUI
 final class DefaultAddNewFilmView: UIViewController {
     
     //MARK: - properties
-    //var viewModel: AddNewFilmViewModel!
+    var viewModel: AddNewFilmViewModel!
     
     private let addImageView = UIImageView()
     private let openAlertButton = UIButton()
@@ -26,14 +26,25 @@ final class DefaultAddNewFilmView: UIViewController {
     private let changeYoutubeButton = UIButton()
     private let descriptionLabel = UILabel()
     private let descriptionTextView = UITextView()
-        
+    
     //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubView()
         setupConstreints()
         setupUI()
+        configBainding()
     }
+    private func configBainding() {
+        viewModel.setupAlert = { [weak self ] alert in
+            self?.present(alert, animated: true)
+        }
+        viewModel.setupPicker = { [weak self ] picker in
+            picker.delegate = self
+            self?.present(picker, animated: true)
+        }
+    }
+
     
     //MARK: - add Sub View
     private func addSubView() {
@@ -174,25 +185,21 @@ final class DefaultAddNewFilmView: UIViewController {
     
     //MARK: - open Alert
     @objc private func openAlertButtonTapped() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: { _ in
-            print("Open Camera")
-        }))
-        alert.addAction(UIAlertAction(title: "Галерея", style: .default, handler: { _ in
-            self.openGalery()
-        }))
-        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
-        present(alert, animated: true)
+        viewModel?.openAlertButtonTapped()
     }
     
     //MARK: - open Galery
     @objc private func openGalery() {
-        var configuretor = PHPickerConfiguration(photoLibrary: .shared())
-        configuretor.filter = .images
-        configuretor.selectionLimit = 1
-        let picker = PHPickerViewController(configuration: configuretor)
-        picker.delegate = self
-        present(picker, animated: true)
+        viewModel?.openGalery()
+    }
+    
+    func setupImage(image: UIImage?) {
+        if let image = image {
+            DispatchQueue.main.async {
+                self.addImageView.image = image
+                self.openAlertButton.setImage(UIImage(), for: .normal)
+            }
+        }
     }
 }
 
@@ -202,12 +209,7 @@ extension DefaultAddNewFilmView: PHPickerViewControllerDelegate {
         let itemProvider = results.first?.itemProvider
         if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self) { image, error in
-                if let image = image as? UIImage {
-                    DispatchQueue.main.async {
-                        self.addImageView.image = image
-                        self.openAlertButton.setImage(UIImage(), for: .normal)
-                    }
-                }
+                self.setupImage(image: image as? UIImage)
             }
         }
         dismiss(animated: true)

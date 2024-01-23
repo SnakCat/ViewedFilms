@@ -48,6 +48,5 @@ final class FilmNameView: UIViewController {
         lineView.backgroundColor = .systemGray5
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
-        
     }
 }

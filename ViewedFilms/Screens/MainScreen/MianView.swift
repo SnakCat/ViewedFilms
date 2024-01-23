@@ -30,6 +30,9 @@ final class DefaultMainView: UIViewController {
         viewModal.setupMovie = { [ weak self ] movie in
             self?.movies = movie
         }
+        viewModal.inputAddNewFilmView = { [ weak self ] addNewView in
+            self?.navigationController?.pushViewController(addNewView, animated: true)
+        }
     }
     
     //MARK: - setup tableView
@@ -57,11 +60,13 @@ final class DefaultMainView: UIViewController {
         title = "My Movie List"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: UIAction(handler: { [ weak self ] _ in
-            let addNewView = DefaultAddNewFilmView()
-            self?.navigationController?.pushViewController(addNewView, animated: true)
+            self?.transitionAddNewFilm()
         }))
         tableView.separatorStyle = .none
         navigationItem.backButtonTitle = ""
+    }
+    private func transitionAddNewFilm() {
+        viewModal.bildAddNewFilmViewController()
     }
 }
 

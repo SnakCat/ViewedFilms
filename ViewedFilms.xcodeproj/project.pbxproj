@@ -12,6 +12,7 @@
 		FF5FAF822B5EB40D002DA81F /* ReleaseDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FAF812B5EB40C002DA81F /* ReleaseDataPickerView.swift */; };
 		FF5FAF842B5EB8A0002DA81F /* FilmNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FAF832B5EB8A0002DA81F /* FilmNameView.swift */; };
 		FF5FAF862B5FA06E002DA81F /* YoutubeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FAF852B5FA06E002DA81F /* YoutubeView.swift */; };
+		FF5FAF892B6005B1002DA81F /* FilmNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FAF882B6005B1002DA81F /* FilmNameViewModel.swift */; };
 		FFD2C6D82B5A701600714A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6D72B5A701600714A14 /* AppDelegate.swift */; };
 		FFD2C6DA2B5A701600714A14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6D92B5A701600714A14 /* SceneDelegate.swift */; };
 		FFD2C6E22B5A701600714A14 /* ViewedFilms.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFD2C6E02B5A701600714A14 /* ViewedFilms.xcdatamodeld */; };
@@ -39,6 +40,7 @@
 		FF5FAF812B5EB40C002DA81F /* ReleaseDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDataPickerView.swift; sourceTree = "<group>"; };
 		FF5FAF832B5EB8A0002DA81F /* FilmNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmNameView.swift; sourceTree = "<group>"; };
 		FF5FAF852B5FA06E002DA81F /* YoutubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeView.swift; sourceTree = "<group>"; };
+		FF5FAF882B6005B1002DA81F /* FilmNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmNameViewModel.swift; sourceTree = "<group>"; };
 		FFD2C6D42B5A701600714A14 /* ViewedFilms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewedFilms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD2C6D72B5A701600714A14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFD2C6D92B5A701600714A14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,12 +78,45 @@
 		FF5FAF7E2B5EA8C5002DA81F /* ChangesViews */ = {
 			isa = PBXGroup;
 			children = (
-				FF5FAF7F2B5EA932002DA81F /* RatingDataPikerView.swift */,
-				FF5FAF812B5EB40C002DA81F /* ReleaseDataPickerView.swift */,
-				FF5FAF832B5EB8A0002DA81F /* FilmNameView.swift */,
-				FF5FAF852B5FA06E002DA81F /* YoutubeView.swift */,
+				FF5FAF872B60058C002DA81F /* Name */,
+				FF5FAF8A2B6009F1002DA81F /* Rating */,
+				FF5FAF8B2B600A0D002DA81F /* Release */,
+				FF5FAF8C2B600A1E002DA81F /* Youtube */,
 			);
 			path = ChangesViews;
+			sourceTree = "<group>";
+		};
+		FF5FAF872B60058C002DA81F /* Name */ = {
+			isa = PBXGroup;
+			children = (
+				FF5FAF832B5EB8A0002DA81F /* FilmNameView.swift */,
+				FF5FAF882B6005B1002DA81F /* FilmNameViewModel.swift */,
+			);
+			path = Name;
+			sourceTree = "<group>";
+		};
+		FF5FAF8A2B6009F1002DA81F /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				FF5FAF7F2B5EA932002DA81F /* RatingDataPikerView.swift */,
+			);
+			path = Rating;
+			sourceTree = "<group>";
+		};
+		FF5FAF8B2B600A0D002DA81F /* Release */ = {
+			isa = PBXGroup;
+			children = (
+				FF5FAF812B5EB40C002DA81F /* ReleaseDataPickerView.swift */,
+			);
+			path = Release;
+			sourceTree = "<group>";
+		};
+		FF5FAF8C2B600A1E002DA81F /* Youtube */ = {
+			isa = PBXGroup;
+			children = (
+				FF5FAF852B5FA06E002DA81F /* YoutubeView.swift */,
+			);
+			path = Youtube;
 			sourceTree = "<group>";
 		};
 		FFD2C6CB2B5A701600714A14 = {
@@ -267,6 +302,7 @@
 				FF5FAF802B5EA932002DA81F /* RatingDataPikerView.swift in Sources */,
 				FF5FAF862B5FA06E002DA81F /* YoutubeView.swift in Sources */,
 				FF5FAF7D2B5E8C43002DA81F /* UIStackView + Extension.swift in Sources */,
+				FF5FAF892B6005B1002DA81F /* FilmNameViewModel.swift in Sources */,
 				FFD2C6F12B5A79B700714A14 /* MianView.swift in Sources */,
 				FFD2C6F72B5A825E00714A14 /* MainViewModal.swift in Sources */,
 				FFD2C7192B5B0D9C00714A14 /* AddNewFilmViewModel.swift in Sources */,
