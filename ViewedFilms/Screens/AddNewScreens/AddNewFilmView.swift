@@ -4,6 +4,8 @@ import PhotosUI
 final class DefaultAddNewFilmView: UIViewController {
     
     //MARK: - properties
+    //var viewModel: AddNewFilmViewModel!
+    
     private let addImageView = UIImageView()
     private let openAlertButton = UIButton()
     private let nameStackView = UIStackView()
@@ -104,6 +106,7 @@ final class DefaultAddNewFilmView: UIViewController {
     
     //MARK: - UI
     private func setupUI() {
+        navigationItem.backButtonTitle = ""
         title = "Add new"
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .save)
@@ -122,6 +125,7 @@ final class DefaultAddNewFilmView: UIViewController {
         nameLabel.text = " - "
         changeNameButton.setTitle("Change", for: .normal)
         changeNameButton.setTitleColor(.systemBlue, for: .normal)
+        changeNameButton.addTarget(self, action: #selector(changeNameButtonTapped), for: .touchUpInside)
         
         ratingStackView.axis = .vertical
         ratingStackView.alignment = .center
@@ -129,6 +133,7 @@ final class DefaultAddNewFilmView: UIViewController {
         ratingLabel.text = " - "
         changeRatingButton.setTitle("Change", for: .normal)
         changeRatingButton.setTitleColor(.systemBlue, for: .normal)
+        changeRatingButton.addTarget(self, action: #selector(changeRatingButtonTapped), for: .touchUpInside)
         
         releaseStackView.axis = .vertical
         releaseStackView.alignment = .center
@@ -136,6 +141,7 @@ final class DefaultAddNewFilmView: UIViewController {
         releaseLabel.text = " - "
         changeReleaseButton.setTitle("Change", for: .normal)
         changeReleaseButton.setTitleColor(.systemBlue, for: .normal)
+        changeReleaseButton.addTarget(self, action: #selector(changeReleaseButtonTapped), for: .touchUpInside)
         
         youtubeStackView.axis = .vertical
         youtubeStackView.alignment = .center
@@ -143,10 +149,27 @@ final class DefaultAddNewFilmView: UIViewController {
         youtubeLabel.text = " - "
         changeYoutubeButton.setTitle("Change", for: .normal)
         changeYoutubeButton.setTitleColor(.systemBlue, for: .normal)
+        changeYoutubeButton.addTarget(self, action: #selector(changeYoutubeButtonTapped), for: .touchUpInside)
         
         descriptionLabel.text = "Description"
         descriptionLabel.textAlignment = .center
         
+    }
+    @objc private func changeRatingButtonTapped() {
+        let ratingViewController = RatingDataPikerView()
+        navigationController?.pushViewController(ratingViewController, animated: true)
+    }
+    @objc private func changeReleaseButtonTapped() {
+        let releaseViewControlle = ReleaseDataPickerView()
+        navigationController?.pushViewController(releaseViewControlle, animated: true)
+    }
+    @objc private func changeNameButtonTapped() {
+        let filmNameViewController = FilmNameView()
+        navigationController?.pushViewController(filmNameViewController, animated: true)
+    }
+    @objc private func changeYoutubeButtonTapped() {
+        let youtubeViewController = YoutubeView()
+        navigationController?.pushViewController(youtubeViewController, animated: true)
     }
     
     //MARK: - open Alert
@@ -172,6 +195,7 @@ final class DefaultAddNewFilmView: UIViewController {
         present(picker, animated: true)
     }
 }
+
     //MARK: - extension picker
 extension DefaultAddNewFilmView: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
