@@ -53,6 +53,6 @@ final class FilmNameView: UIViewController {
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
     }
     @objc private func saveButtonTapped() {
-        viewModel.saveName()
+       viewModel.saveName()
     }
 }

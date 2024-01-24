@@ -1,10 +1,6 @@
 import UIKit
 import PhotosUI
 
-protocol ChangesViewProtocol {
-    
-}
-
 protocol AddNewFilmViewModel {
     func changeNameView()
     func changeRatingView()
@@ -25,7 +21,7 @@ protocol AddNewFilmViewModel {
     
 }
 
-final class DefaultAddNewFilmViewModal: AddNewFilmViewModel, FilmNameViewModel {
+final class DefaultAddNewFilmViewModal: AddNewFilmViewModel {
     
     var transitionNameView: ((FilmNameView) -> Void)?
     var transitionRatingView: ((RatingDataPikerView) -> Void)?
@@ -56,8 +52,8 @@ final class DefaultAddNewFilmViewModal: AddNewFilmViewModel, FilmNameViewModel {
     }
     func changeNameView() {
         let filmNameView = FilmNameView()
-        let filmAddNewFilmViewModel = DefaultAddNewFilmViewModal()
-        filmNameView.viewModel = filmAddNewFilmViewModel
+        let filmNameViewModel = DefaultFilmNameViewModal()
+        filmNameView.viewModel = filmNameViewModel
         transitionNameView?(filmNameView)
     }
     
