@@ -2,6 +2,8 @@ import UIKit
 
 final class ReleaseDataPickerView: UIViewController {
     
+    var viewModel: ReleaseDataPickerViewModel!
+    
     private let titleLabel = UILabel()
     private let dataPickerView = UIDatePicker()
     private let saveButton = UIButton()

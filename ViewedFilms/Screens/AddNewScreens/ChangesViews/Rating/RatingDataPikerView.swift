@@ -2,11 +2,12 @@ import UIKit
 
 final class RatingDataPikerView: UIViewController {
     
+    var viewModel: RatingDataPikerViewModel!
+    
     private let titleLeble = UILabel()
     private let ratingPicker = UIPickerView()
     private let saveButton = UIButton()
-    private let valuesRating: [Double] = Array(stride(from: 0.0, through: 10.0, by: 0.1)) //TODO: - исправить цифры
-    private var selectionRating: Double?
+    private let valuesRating: [Double] = Array(stride(from: 0.0, through: 10.0, by: 0.1))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +56,10 @@ extension RatingDataPikerView: UIPickerViewDelegate, UIPickerViewDataSource {
         valuesRating.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        String(valuesRating[row])
+        String(format: "%.1f", valuesRating[row])
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectionRating = valuesRating[row]
+        let selectionRating = valuesRating[row]
     }
     
 }

@@ -2,6 +2,8 @@ import UIKit
 
 final class YoutubeView: UIViewController {
     
+    var viewModel: YoutubeViewModel!
+    
     private let titleName = UILabel()
     private let urlTextField = UITextField()
     private let lineView = UIView()

@@ -2,6 +2,8 @@ import UIKit
 
 final class FilmNameView: UIViewController {
     
+    var viewModel: FilmNameViewModel!
+    
     private let titleLabel = UILabel()
     private let nameTextField = UITextField()
     private let lineView = UIView()
@@ -48,5 +50,9 @@ final class FilmNameView: UIViewController {
         lineView.backgroundColor = .systemGray5
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+    }
+    @objc private func saveButtonTapped() {
+        viewModel.saveName()
     }
 }

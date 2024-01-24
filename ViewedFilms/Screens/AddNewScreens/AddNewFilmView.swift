@@ -43,6 +43,19 @@ final class DefaultAddNewFilmView: UIViewController {
             picker.delegate = self
             self?.present(picker, animated: true)
         }
+        viewModel.transitionNameView = { [ weak self ] FilmNameView in
+            self?.navigationController?.pushViewController(FilmNameView, animated: true)
+        }
+        viewModel.transitionRatingView = { [ weak self ] RatingDataPikerView in
+            self?.navigationController?.pushViewController(RatingDataPikerView, animated: true)
+        }
+        viewModel.transitionReleaseView = { [ weak self ] ReleaseDataPickerView in
+            self?.navigationController?.pushViewController(ReleaseDataPickerView, animated: true)
+        }
+        viewModel.transitionYoutubeView = { [ weak self ] YoutubeView in
+            self?.navigationController?.pushViewController(YoutubeView, animated: true)
+
+        }
     }
 
     
@@ -167,20 +180,16 @@ final class DefaultAddNewFilmView: UIViewController {
         
     }
     @objc private func changeRatingButtonTapped() {
-        let ratingViewController = RatingDataPikerView()
-        navigationController?.pushViewController(ratingViewController, animated: true)
+        viewModel.changeRatingView()
     }
     @objc private func changeReleaseButtonTapped() {
-        let releaseViewControlle = ReleaseDataPickerView()
-        navigationController?.pushViewController(releaseViewControlle, animated: true)
+        viewModel.changeReleaseView()
     }
     @objc private func changeNameButtonTapped() {
-        let filmNameViewController = FilmNameView()
-        navigationController?.pushViewController(filmNameViewController, animated: true)
+        viewModel.changeNameView()
     }
     @objc private func changeYoutubeButtonTapped() {
-        let youtubeViewController = YoutubeView()
-        navigationController?.pushViewController(youtubeViewController, animated: true)
+        viewModel.changeYoutubeView()
     }
     
     //MARK: - open Alert

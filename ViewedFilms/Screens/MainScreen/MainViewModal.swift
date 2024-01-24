@@ -26,3 +26,4 @@ final class DefaultMainViewModal: MainViewModal {
         inputAddNewFilmView?(addNewView)
     }
 }
+
