@@ -15,6 +15,13 @@ final class YoutubeView: UIViewController {
         setupConstreints()
         setupUI()
     }
+    
+    private func configBinding() {
+        viewModel.saveYoutubeColosure = { [ weak self ] link in
+            self?.urlTextField.text = link
+        }
+    }
+    
     private func setupConstreints() {
         titleName.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -50,5 +57,18 @@ final class YoutubeView: UIViewController {
         lineView.backgroundColor = .systemGray5
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+
+    }
+    private func getYoutube() -> String? {
+        let link = self.urlTextField.text
+        return link
+    }
+    
+    @objc func saveButtonTapped() {
+        if let link = getYoutube() {
+            viewModel.saveYoutube(snting: link)
+            navigationController?.popViewController(animated: true)
+        }
     }
 }

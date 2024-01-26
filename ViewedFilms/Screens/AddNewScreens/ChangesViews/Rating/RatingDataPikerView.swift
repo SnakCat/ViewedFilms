@@ -17,6 +17,13 @@ final class RatingDataPikerView: UIViewController {
         ratingPicker.delegate = self
         ratingPicker.dataSource = self
     }
+    
+    private func configBinding() {
+        viewModel.saveRatingColosure = { [ weak self ] rating in
+            self?.titleLeble.text = rating
+        }
+    }
+    
     private func setupConstreints() {
         titleLeble.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -43,7 +50,20 @@ final class RatingDataPikerView: UIViewController {
         titleLeble.text = "Your Rating"
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         
+    }
+    
+    private func getReting() -> String? {
+        let reting = self.ratingPicker.selectedRow(inComponent: 0)
+        return String(reting)
+    }
+    
+    @objc func saveButtonTapped() {
+        if let reting = getReting() {
+            viewModel.saveRating(string: reting)
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 

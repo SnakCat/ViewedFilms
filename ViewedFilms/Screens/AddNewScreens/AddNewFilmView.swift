@@ -47,18 +47,25 @@ final class DefaultAddNewFilmView: UIViewController {
             self?.navigationController?.pushViewController(filmNameView, animated: true)
             filmNameView.viewModel.saveNameClosure = { [ weak self ] name in
                 self?.nameLabel.text = name
-                print("123")
             }
         }
-        viewModel.transitionRatingView = { [ weak self ] RatingDataPikerView in
-            self?.navigationController?.pushViewController(RatingDataPikerView, animated: true)
+        viewModel.transitionRatingView = { [ weak self ] ratingDataPikerView in
+            self?.navigationController?.pushViewController(ratingDataPikerView, animated: true)
+            ratingDataPikerView.viewModel.saveRatingColosure = { [ weak self ] rating in
+                self?.ratingLabel.text = rating
+            }
         }
-        viewModel.transitionReleaseView = { [ weak self ] ReleaseDataPickerView in
-            self?.navigationController?.pushViewController(ReleaseDataPickerView, animated: true)
+        viewModel.transitionReleaseView = { [ weak self ] releaseDataPickerView in
+            self?.navigationController?.pushViewController(releaseDataPickerView, animated: true)
+            releaseDataPickerView.viewModel.saveDataColosure = { [ weak self ] release in
+                self?.releaseLabel.text = release
+            }
         }
-        viewModel.transitionYoutubeView = { [ weak self ] YoutubeView in
-            self?.navigationController?.pushViewController(YoutubeView, animated: true)
-
+        viewModel.transitionYoutubeView = { [ weak self ] youtubeView in
+            self?.navigationController?.pushViewController(youtubeView, animated: true)
+            youtubeView.viewModel.saveYoutubeColosure = { [ weak self ] link in
+                self?.youtubeLabel.text = link
+            }
         }
     }
 

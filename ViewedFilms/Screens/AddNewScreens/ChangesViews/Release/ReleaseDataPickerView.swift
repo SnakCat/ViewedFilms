@@ -7,6 +7,7 @@ final class ReleaseDataPickerView: UIViewController {
     private let titleLabel = UILabel()
     private let dataPickerView = UIDatePicker()
     private let saveButton = UIButton()
+    private let releaseDataTextField = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -14,6 +15,13 @@ final class ReleaseDataPickerView: UIViewController {
         setupConstreints()
         setupUI()
     }
+    
+    private func configBinding() {
+        viewModel.saveDataColosure = { [ weak self ] release in
+            self?.releaseDataTextField.text = release
+        }
+    }
+    
     private func setupConstreints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -40,9 +48,26 @@ final class ReleaseDataPickerView: UIViewController {
         titleLabel.text = "Release Date"
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         
+        releaseDataTextField.inputView = dataPickerView
         dataPickerView.datePickerMode = .date
         dataPickerView.maximumDate = Date()
         dataPickerView.preferredDatePickerStyle = .wheels
+        
+    }
+    
+    private func getData() -> String? {
+        let release = self.dataPickerView.date
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "dd.MM.yyyy"
+        return dateFormater.string(from: release)
+    }
+    
+    @objc func saveButtonTapped() {
+        if let release = getData() {
+            viewModel.saveData(string: release)
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
