@@ -43,8 +43,12 @@ final class DefaultAddNewFilmView: UIViewController {
             picker.delegate = self
             self?.present(picker, animated: true)
         }
-        viewModel.transitionNameView = { [ weak self ] FilmNameView in
-            self?.navigationController?.pushViewController(FilmNameView, animated: true)
+        viewModel.transitionNameView = { [ weak self ] filmNameView in
+            self?.navigationController?.pushViewController(filmNameView, animated: true)
+            filmNameView.viewModel.saveNameClosure = { [ weak self ] name in
+                self?.nameLabel.text = name
+                print("123")
+            }
         }
         viewModel.transitionRatingView = { [ weak self ] RatingDataPikerView in
             self?.navigationController?.pushViewController(RatingDataPikerView, animated: true)
