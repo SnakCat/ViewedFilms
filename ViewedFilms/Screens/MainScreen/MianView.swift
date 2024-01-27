@@ -84,9 +84,21 @@ extension DefaultMainView: UITableViewDataSource, UITableViewDelegate {
         }
         return UITableViewCell()
     }
+        
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let movie = movies[indexPath.row]
+        if editingStyle == .delete {
+            let alertDelete = UIAlertController(title: "Delete", message: nil, preferredStyle: .alert)
+            alertDelete.addAction(UIAlertAction(title: "Clouse", style: .default, handler: nil))
+            alertDelete.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+                _ = CoreDataManager.instance.deleteFilm(movie)
+                self.viewModal.loadMovies()
+            }))
+            present(alertDelete, animated: true)
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
 }

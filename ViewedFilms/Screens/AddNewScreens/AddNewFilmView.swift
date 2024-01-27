@@ -67,8 +67,30 @@ final class DefaultAddNewFilmView: UIViewController {
                 self?.youtubeLabel.text = link
             }
         }
+        viewModel.saveNewFilmColosure = { [ weak self ] alert in
+            self?.present(alert, animated:  true)
+        }
     }
-
+    
+    func setupImage(image: UIImage?) {
+        if let image = image {
+            DispatchQueue.main.async {
+                self.addImageView.image = image
+                self.openAlertButton.setImage(UIImage(), for: .normal)
+            }
+        }
+    }
+    
+    private func saveFilm() {
+        guard let imageFilm = addImageView.image?.jpegData(compressionQuality: 1.0),
+              let nameFilm = nameLabel.text,
+              let retingFilm = ratingLabel.text,
+              let releasData = releaseLabel.text,
+              let youtube = youtubeLabel.text,
+              let description = descriptionLabel.text
+        else { return }
+        viewModel.saveNewFilmInCoreData(imageFilm: imageFilm, nameFilm: nameFilm, retingFilm: retingFilm, releasData: releasData, youtube: youtube, description: description)
+    }
     
     //MARK: - add Sub View
     private func addSubView() {
@@ -144,8 +166,9 @@ final class DefaultAddNewFilmView: UIViewController {
         navigationItem.backButtonTitle = ""
         title = "Add new"
         view.backgroundColor = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .save)
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .save, primaryAction: UIAction(handler: { [ weak self] _ in
+            self?.saveFilm()
+        }))
         addImageView.backgroundColor = .backgroundAdd
         addImageView.layer.cornerRadius = 75
         addImageView.layer.masksToBounds = true
@@ -211,15 +234,6 @@ final class DefaultAddNewFilmView: UIViewController {
     //MARK: - open Galery
     @objc private func openGalery() {
         viewModel?.openGalery()
-    }
-    
-    func setupImage(image: UIImage?) {
-        if let image = image {
-            DispatchQueue.main.async {
-                self.addImageView.image = image
-                self.openAlertButton.setImage(UIImage(), for: .normal)
-            }
-        }
     }
 }
 

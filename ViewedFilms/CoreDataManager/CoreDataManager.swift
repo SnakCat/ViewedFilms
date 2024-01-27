@@ -14,7 +14,7 @@ final class CoreDataManager {
     init() { }
     
     //MARK: - save method
-    func saveMovie(imageFilm: UIImage, filmName: String, reating: String, releaseData: String, youtubeLink: String, descriptionFilm: String) -> Result<Void, CoreDataError> {
+    func saveMovie(imageFilm: Data, filmName: String, reating: String, releaseData: String, youtubeLink: String, descriptionFilm: String) -> Result<Void, CoreDataError> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return .failure(.error("AppDelegate not found"))
         }
@@ -22,9 +22,8 @@ final class CoreDataManager {
         let entity = NSEntityDescription.entity(forEntityName: "Movie", in: managerContent)!
         let movie = NSManagedObject(entity: entity, insertInto: managerContent)
         
-        if let imageData = imageFilm.pngData() {
-            movie.setValue(imageFilm, forKey: "imageFilm")
-        }
+        
+        movie.setValue(imageFilm, forKey: "imageFilm")
         movie.setValue(filmName, forKey: "filmName")
         movie.setValue(reating, forKey: "reating")
         movie.setValue(youtubeLink, forKey: "youtubeLink")
@@ -54,6 +53,20 @@ final class CoreDataManager {
             return .success(fetchMovie)
         } catch {
             return .failure(.error("Cloud not fetch \(error)"))
+        }
+    }
+    //MARK: - deleteFilm
+    func deleteFilm(_ movie: Movie) -> Result<Void, CoreDataError> {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return .failure(.error("AppDelegate not found"))
+        }
+        let manegetContext = appDelegate.persistentContainer.viewContext
+        do {
+            manegetContext.delete(movie)
+            try manegetContext.save()
+            return .success(())
+        } catch {
+            return .failure(.error("Error deleting movie \(error)"))
         }
     }
 }

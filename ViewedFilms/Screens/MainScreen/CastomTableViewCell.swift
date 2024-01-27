@@ -24,7 +24,11 @@ class CastomTableViewCell: UITableViewCell {
     
     //MARK: - configure Entity
     func configureEntity(movie: Movie) {
-        //movieImageView.image = movie.imageFilm
+        if let imageData = movie.imageFilm, let movieImage = UIImage(data: imageData) {
+            self.movieImageView.image = movieImage
+        } else {
+            self.movieImageView.image = UIImage(named: "default_image")
+        }
         nameLabel.text = movie.filmName
         gradeLabel.text = movie.reating
     }

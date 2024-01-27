@@ -6,7 +6,8 @@ protocol AddNewFilmViewModel {
     func changeRatingView()
     func changeReleaseView()
     func changeYoutubeView()
-    
+    func saveNewFilmInCoreData(imageFilm: Data?, nameFilm: String?, retingFilm: String?, releasData: String?, youtube: String?, description: String?)
+    var saveNewFilmColosure: ((UIAlertController) -> Void)? { get set }
     var transitionNameView: ((FilmNameView) -> Void)? { get set }
     var transitionRatingView: ((RatingDataPikerView) -> Void)? { get set }
     var transitionReleaseView: ((ReleaseDataPickerView) -> Void)? { get set }
@@ -23,6 +24,7 @@ protocol AddNewFilmViewModel {
 
 final class DefaultAddNewFilmViewModal: AddNewFilmViewModel {
     
+    var saveNewFilmColosure: ((UIAlertController) -> Void)?
     var transitionNameView: ((FilmNameView) -> Void)?
     var transitionRatingView: ((RatingDataPikerView) -> Void)?
     var transitionReleaseView: ((ReleaseDataPickerView) -> Void)?
@@ -76,6 +78,30 @@ final class DefaultAddNewFilmViewModal: AddNewFilmViewModel {
         let youtubeViewModel = DefaultYoutubeViewModel()
         youtubeView.viewModel = youtubeViewModel
         transitionYoutubeView?(youtubeView)
+    }
+    
+    func saveNewFilmInCoreData(imageFilm: Data?, nameFilm: String?, retingFilm: String?, releasData: String?, youtube: String?, description: String?) {
+        let alertSuccses = UIAlertController(title: nil, message: "add Movie", preferredStyle: .alert)
+        alertSuccses.addAction(UIAlertAction(title: "ok", style: .default, handler: { _ in
+            
+        }))
+        let alertError = UIAlertController(title: nil, message: "Error", preferredStyle: .alert)
+        alertError.addAction(UIAlertAction(title: "ok", style: .destructive, handler: { _ in
+            
+        }))
+        
+        guard let imageFilm = imageFilm,
+              let nameFilm = nameFilm,
+              let retingFilm = retingFilm,
+              let releasData = releasData,
+              let youtube = youtube,
+              let description = description
+        else { return }
+        
+        let result = CoreDataManager.instance.saveMovie(imageFilm: imageFilm, filmName: nameFilm, reating: retingFilm, releaseData: releasData, youtubeLink: youtube, descriptionFilm: description)
+        
+        saveNewFilmColosure?(alertSuccses)
+        
     }
 }
 
