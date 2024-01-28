@@ -87,7 +87,7 @@ final class DefaultAddNewFilmView: UIViewController {
               let retingFilm = ratingLabel.text,
               let releasData = releaseLabel.text,
               let youtube = youtubeLabel.text,
-              let description = descriptionLabel.text
+              let description = descriptionTextView.text
         else { return }
         viewModel.saveNewFilmInCoreData(imageFilm: imageFilm, nameFilm: nameFilm, retingFilm: retingFilm, releasData: releasData, youtube: youtube, description: description)
     }

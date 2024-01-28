@@ -99,6 +99,9 @@ extension DefaultMainView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let InfoFilm = FullInfoFilmView()
+        let movie = movies[indexPath.row]
+        InfoFilm.configure(movie: movie)
+        navigationController?.pushViewController(InfoFilm, animated: true)
     }
 }

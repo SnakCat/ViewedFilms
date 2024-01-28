@@ -26,6 +26,7 @@ final class CoreDataManager {
         movie.setValue(imageFilm, forKey: "imageFilm")
         movie.setValue(filmName, forKey: "filmName")
         movie.setValue(reating, forKey: "reating")
+        movie.setValue(releaseData, forKey: "releaseData")
         movie.setValue(youtubeLink, forKey: "youtubeLink")
         movie.setValue(descriptionFilm, forKey: "descriptionFilm")
         
@@ -43,14 +44,11 @@ final class CoreDataManager {
             return .failure(.error("AppDelegate not found"))
         }
         let namagerContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
+        let fetchRequest = NSFetchRequest<Movie>(entityName: "Movie")
         
         do {
             let object = try namagerContext.fetch(fetchRequest)
-            guard let fetchMovie = object as? [Movie] else {
-                return .failure(.error("Cloud not cast as [Movie]"))
-            }
-            return .success(fetchMovie)
+            return .success(object)
         } catch {
             return .failure(.error("Cloud not fetch \(error)"))
         }
