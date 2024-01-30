@@ -6,6 +6,7 @@ protocol RatingDataPikerViewModel {
     //MARK: - colosure
     var saveRatingColosure: ((String) -> Void)? { get set }
 }
+
     //MARK: - class
 final class DefaultRatingDataPikerViewModel: RatingDataPikerViewModel {
     

@@ -1,9 +1,9 @@
 import UIKit
 
 final class RatingDataPikerView: UIViewController {
+    
     //MARK: - propertis
     var viewModel: RatingDataPikerViewModel!
-    
     private let titleLeble = UILabel()
     private let ratingPicker = UIPickerView()
     private let saveButton = UIButton()
@@ -51,12 +51,13 @@ final class RatingDataPikerView: UIViewController {
     //MARK: - UI
     private func setupUI() {
         view.backgroundColor = .white
+        
         titleLeble.textAlignment = .center
         titleLeble.text = "Your Rating"
+        
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
-        
     }
     
     //MARK: - methods
@@ -73,6 +74,7 @@ final class RatingDataPikerView: UIViewController {
         }
     }
 }
+
     //MARK: - extension + picker
 extension RatingDataPikerView: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

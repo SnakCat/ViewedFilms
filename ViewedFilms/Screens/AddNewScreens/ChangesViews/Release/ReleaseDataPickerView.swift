@@ -4,7 +4,6 @@ final class ReleaseDataPickerView: UIViewController {
     
     //MARK: - propertis
     var viewModel: ReleaseDataPickerViewModel!
-    
     private let titleLabel = UILabel()
     private let dataPickerView = UIDatePicker()
     private let saveButton = UIButton()
@@ -50,13 +49,16 @@ final class ReleaseDataPickerView: UIViewController {
     //MARK: - UI
     private func setupUI() {
         view.backgroundColor = .white
+        
         titleLabel.textAlignment = .center
         titleLabel.text = "Release Date"
+        
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         
         releaseDataTextField.inputView = dataPickerView
+        
         dataPickerView.datePickerMode = .date
         dataPickerView.maximumDate = Date()
         dataPickerView.preferredDatePickerStyle = .wheels

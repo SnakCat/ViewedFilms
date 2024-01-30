@@ -4,7 +4,6 @@ final class YoutubeView: UIViewController {
     
     //MARK: - propertis
     var viewModel: YoutubeViewModel!
-    
     private let titleName = UILabel()
     private let urlTextField = UITextField()
     private let lineView = UIView()
@@ -57,10 +56,14 @@ final class YoutubeView: UIViewController {
     //MARK: - UI
     private func setupUI() {
         view.backgroundColor = .white
+        
         titleName.textAlignment = .center
         titleName.text = "YouTube Link"
+        
         urlTextField.placeholder = "Name"
+        
         lineView.backgroundColor = .systemGray5
+        
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)

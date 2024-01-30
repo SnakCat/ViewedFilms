@@ -6,6 +6,7 @@ protocol ReleaseDataPickerViewModel {
     //MARK: - colosure
     var saveDataColosure: ((String) -> Void)? { get set }
 }
+
     //MARK: - class
 final class DefaultReleaseDataPickerViewModel: ReleaseDataPickerViewModel {
     

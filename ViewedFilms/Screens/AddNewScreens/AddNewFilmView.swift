@@ -5,7 +5,6 @@ final class DefaultAddNewFilmView: UIViewController {
     
     //MARK: - properties
     var viewModel: AddNewFilmViewModel!
-    
     private let addImageView = UIImageView()
     private let openAlertButton = UIButton()
     private let nameStackView = UIStackView()

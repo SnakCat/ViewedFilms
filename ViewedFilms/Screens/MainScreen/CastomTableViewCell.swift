@@ -73,7 +73,6 @@ class CastomTableViewCell: UITableViewCell {
         ])
         gradeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            //gradeLabel.leadingAnchor.constraint(equalTo: infoView.leadingAnchor, constant: 30),
             gradeLabel.bottomAnchor.constraint(equalTo: infoView.bottomAnchor, constant: -50),
             gradeLabel.trailingAnchor.constraint(equalTo: infoView.centerXAnchor)
         ])

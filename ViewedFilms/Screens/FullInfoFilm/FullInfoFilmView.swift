@@ -24,7 +24,6 @@ final class FullInfoFilmView: UIViewController {
         addSubeviews()
         setupConstreints()
         setupUI()
-
     }
   
     //MARK: - add SubView

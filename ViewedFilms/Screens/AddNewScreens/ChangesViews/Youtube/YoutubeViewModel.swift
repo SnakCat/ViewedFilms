@@ -6,6 +6,7 @@ protocol YoutubeViewModel {
     //MARK: - colosure
     var saveYoutubeColosure: ((String) -> Void)? { get set }
 }
+
     //MARK: - class
 final class DefaultYoutubeViewModel: YoutubeViewModel {
     

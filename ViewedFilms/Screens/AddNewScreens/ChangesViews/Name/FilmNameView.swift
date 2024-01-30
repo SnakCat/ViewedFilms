@@ -4,7 +4,6 @@ final class FilmNameView: UIViewController {
     
     //MARK: - propertis
     var viewModel: FilmNameViewModel!
-    
     private let titleLabel = UILabel()
     private let nameTextField = UITextField()
     private let lineView = UIView()
@@ -16,7 +15,6 @@ final class FilmNameView: UIViewController {
         view.addSubviews(titleLabel, nameTextField, lineView, saveButton)
         setupConstreints()
         setupUI()
-        
     }
     
     //MARK: - binding
@@ -58,10 +56,14 @@ final class FilmNameView: UIViewController {
     //MARK: - UI
     private func setupUI() {
         view.backgroundColor = .white
+        
         titleLabel.textAlignment = .center
         titleLabel.text = "Film Name"
+        
         nameTextField.placeholder = "Name"
+        
         lineView.backgroundColor = .systemGray5
+        
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)

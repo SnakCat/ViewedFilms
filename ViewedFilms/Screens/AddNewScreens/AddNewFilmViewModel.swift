@@ -21,6 +21,7 @@ protocol AddNewFilmViewModel {
     var setupAlert: ((UIAlertController) -> Void)? { get set }
     var setupPicker: ((PHPickerViewController) -> Void)? { get set }
 }
+
     //MARK: - class
 final class DefaultAddNewFilmViewModal: AddNewFilmViewModel {
     
