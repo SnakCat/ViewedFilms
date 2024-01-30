@@ -2,6 +2,7 @@ import UIKit
 
 final class ReleaseDataPickerView: UIViewController {
     
+    //MARK: - propertis
     var viewModel: ReleaseDataPickerViewModel!
     
     private let titleLabel = UILabel()
@@ -9,6 +10,7 @@ final class ReleaseDataPickerView: UIViewController {
     private let saveButton = UIButton()
     private let releaseDataTextField = UITextField()
     
+    //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubviews(titleLabel, dataPickerView, saveButton)
@@ -16,12 +18,14 @@ final class ReleaseDataPickerView: UIViewController {
         setupUI()
     }
     
+    //MARK: - binding
     private func configBinding() {
         viewModel.saveDataColosure = { [ weak self ] release in
             self?.releaseDataTextField.text = release
         }
     }
     
+    //MARK: - constreints
     private func setupConstreints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -42,6 +46,8 @@ final class ReleaseDataPickerView: UIViewController {
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
+    
+    //MARK: - UI
     private func setupUI() {
         view.backgroundColor = .white
         titleLabel.textAlignment = .center
@@ -57,6 +63,7 @@ final class ReleaseDataPickerView: UIViewController {
         
     }
     
+    //MARK: - methods
     private func getData() -> String? {
         let release = self.dataPickerView.date
         let dateFormater = DateFormatter()

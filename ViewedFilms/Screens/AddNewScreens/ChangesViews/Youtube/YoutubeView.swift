@@ -2,6 +2,7 @@ import UIKit
 
 final class YoutubeView: UIViewController {
     
+    //MARK: - propertis
     var viewModel: YoutubeViewModel!
     
     private let titleName = UILabel()
@@ -9,6 +10,7 @@ final class YoutubeView: UIViewController {
     private let lineView = UIView()
     private let saveButton = UIButton()
     
+    //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubviews(titleName, urlTextField, lineView, saveButton)
@@ -16,12 +18,14 @@ final class YoutubeView: UIViewController {
         setupUI()
     }
     
+    //MARK: - binding
     private func configBinding() {
         viewModel.saveYoutubeColosure = { [ weak self ] link in
             self?.urlTextField.text = link
         }
     }
     
+    //MARK: - constreints
     private func setupConstreints() {
         titleName.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -49,6 +53,8 @@ final class YoutubeView: UIViewController {
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
+    
+    //MARK: - UI
     private func setupUI() {
         view.backgroundColor = .white
         titleName.textAlignment = .center
@@ -60,6 +66,8 @@ final class YoutubeView: UIViewController {
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
 
     }
+    
+    //MARK: - methods
     private func getYoutube() -> String? {
         let link = self.urlTextField.text
         return link

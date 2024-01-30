@@ -1,7 +1,7 @@
 import UIKit
 
 final class RatingDataPikerView: UIViewController {
-    
+    //MARK: - propertis
     var viewModel: RatingDataPikerViewModel!
     
     private let titleLeble = UILabel()
@@ -9,6 +9,7 @@ final class RatingDataPikerView: UIViewController {
     private let saveButton = UIButton()
     private let valuesRating: [Double] = Array(stride(from: 0.0, through: 10.0, by: 0.1))
     
+    //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubviews(titleLeble, ratingPicker, saveButton)
@@ -18,12 +19,14 @@ final class RatingDataPikerView: UIViewController {
         ratingPicker.dataSource = self
     }
     
+    //MARK: - binding
     private func configBinding() {
         viewModel.saveRatingColosure = { [ weak self ] rating in
             self?.titleLeble.text = rating
         }
     }
     
+    //MARK: - constreints
     private func setupConstreints() {
         titleLeble.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -44,6 +47,8 @@ final class RatingDataPikerView: UIViewController {
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
+    
+    //MARK: - UI
     private func setupUI() {
         view.backgroundColor = .white
         titleLeble.textAlignment = .center
@@ -54,8 +59,10 @@ final class RatingDataPikerView: UIViewController {
         
     }
     
+    //MARK: - methods
     private func getReting() -> String? {
-        let reting = self.ratingPicker.selectedRow(inComponent: 0)
+        let row = self.ratingPicker.selectedRow(inComponent: 0)
+        let reting = Double(row) / 10.0
         return String(reting)
     }
     
@@ -66,7 +73,7 @@ final class RatingDataPikerView: UIViewController {
         }
     }
 }
-
+    //MARK: - extension + picker
 extension RatingDataPikerView: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -75,11 +82,12 @@ extension RatingDataPikerView: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         valuesRating.count
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         String(format: "%.1f", valuesRating[row])
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectionRating = valuesRating[row]
     }
-    
 }

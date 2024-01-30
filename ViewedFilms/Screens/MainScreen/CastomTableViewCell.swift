@@ -8,6 +8,7 @@ class CastomTableViewCell: UITableViewCell {
     private let nameLabel = UILabel()
     private let gradeLabel = UILabel()
     private let infoView = UIView()
+    private let defaultRetingLabel = UILabel()
     
     //MARK: - life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -37,7 +38,7 @@ class CastomTableViewCell: UITableViewCell {
     private func addSubViewCell() {
         contentView.addSubview(contenerView)
         contenerView.addSubviews(movieImageView, infoView)
-        infoView.addSubviews(nameLabel, gradeLabel)
+        infoView.addSubviews(nameLabel, gradeLabel, defaultRetingLabel)
     }
     
     //MARK: - constreints
@@ -72,9 +73,14 @@ class CastomTableViewCell: UITableViewCell {
         ])
         gradeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            gradeLabel.leadingAnchor.constraint(equalTo: infoView.leadingAnchor, constant: 30),
-            gradeLabel.trailingAnchor.constraint(equalTo: infoView.trailingAnchor, constant: -29),
-            gradeLabel.bottomAnchor.constraint(equalTo: infoView.bottomAnchor, constant: -50)
+            //gradeLabel.leadingAnchor.constraint(equalTo: infoView.leadingAnchor, constant: 30),
+            gradeLabel.bottomAnchor.constraint(equalTo: infoView.bottomAnchor, constant: -50),
+            gradeLabel.trailingAnchor.constraint(equalTo: infoView.centerXAnchor)
+        ])
+        defaultRetingLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            defaultRetingLabel.bottomAnchor.constraint(equalTo: infoView.bottomAnchor, constant: -50),
+            defaultRetingLabel.leadingAnchor.constraint(equalTo: gradeLabel.trailingAnchor, constant: 2.5),
         ])
     }
     
@@ -92,5 +98,9 @@ class CastomTableViewCell: UITableViewCell {
         nameLabel.font = UIFont(name: "manrope-regular", size: 18)
         
         gradeLabel.textAlignment = .center
+        gradeLabel.font = UIFont(name: "manrope-semibold", size: 18)
+        
+        defaultRetingLabel.font = UIFont(name: "manrope-thin", size: 18)
+        defaultRetingLabel.text = "/10"
     }
 }

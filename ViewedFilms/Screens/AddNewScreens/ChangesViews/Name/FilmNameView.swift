@@ -2,6 +2,7 @@ import UIKit
 
 final class FilmNameView: UIViewController {
     
+    //MARK: - propertis
     var viewModel: FilmNameViewModel!
     
     private let titleLabel = UILabel()
@@ -9,6 +10,7 @@ final class FilmNameView: UIViewController {
     private let lineView = UIView()
     private let saveButton = UIButton()
     
+    //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubviews(titleLabel, nameTextField, lineView, saveButton)
@@ -17,12 +19,14 @@ final class FilmNameView: UIViewController {
         
     }
     
+    //MARK: - binding
     private func configBilding() {
         viewModel.saveNameClosure = { [ weak self ] name in
             self?.nameTextField.text = name
         }
     }
     
+    //MARK: - constreints
     private func setupConstreints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -50,6 +54,8 @@ final class FilmNameView: UIViewController {
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
+    
+    //MARK: - UI
     private func setupUI() {
         view.backgroundColor = .white
         titleLabel.textAlignment = .center
@@ -61,11 +67,13 @@ final class FilmNameView: UIViewController {
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
     }
     
+    //MARK: - methods
     private func getText() -> String? {
         let text = self.nameTextField.text
         return text
         
     }
+    
     @objc func saveButtonTapped() {
         if let name = getText() {
             viewModel.saveName(string: name)

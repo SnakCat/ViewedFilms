@@ -35,6 +35,8 @@ final class DefaultAddNewFilmView: UIViewController {
         setupUI()
         configBainding()
     }
+    
+    //MARK: - binding
     private func configBainding() {
         viewModel.setupAlert = { [weak self ] alert in
             self?.present(alert, animated: true)
@@ -72,6 +74,7 @@ final class DefaultAddNewFilmView: UIViewController {
         }
     }
     
+    //MARK: - methods image
     func setupImage(image: UIImage?) {
         if let image = image {
             DispatchQueue.main.async {
@@ -81,6 +84,7 @@ final class DefaultAddNewFilmView: UIViewController {
         }
     }
     
+    //MARK: - methods save
     private func saveFilm() {
         guard let imageFilm = addImageView.image?.jpegData(compressionQuality: 1.0),
               let nameFilm = nameLabel.text,
@@ -213,6 +217,8 @@ final class DefaultAddNewFilmView: UIViewController {
         descriptionLabel.textAlignment = .center
         
     }
+    
+    //MARK: - buttons
     @objc private func changeRatingButtonTapped() {
         viewModel.changeRatingView()
     }

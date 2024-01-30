@@ -53,6 +53,7 @@ final class CoreDataManager {
             return .failure(.error("Cloud not fetch \(error)"))
         }
     }
+    
     //MARK: - deleteFilm
     func deleteFilm(_ movie: Movie) -> Result<Void, CoreDataError> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

@@ -1,38 +1,39 @@
 import UIKit
 import PhotosUI
-
+    //MARK: - protocol
 protocol AddNewFilmViewModel {
+    
+    //MARK: - methods
     func changeNameView()
     func changeRatingView()
     func changeReleaseView()
     func changeYoutubeView()
     func saveNewFilmInCoreData(imageFilm: Data?, nameFilm: String?, retingFilm: String?, releasData: String?, youtube: String?, description: String?)
+    func openAlertButtonTapped()
+    func openGalery()
+    
+    //MARK: - colocure
     var saveNewFilmColosure: ((UIAlertController) -> Void)? { get set }
     var transitionNameView: ((FilmNameView) -> Void)? { get set }
     var transitionRatingView: ((RatingDataPikerView) -> Void)? { get set }
     var transitionReleaseView: ((ReleaseDataPickerView) -> Void)? { get set }
     var transitionYoutubeView: ((YoutubeView) -> Void)? { get set }
-    
-    
-    func openAlertButtonTapped()
-    func openGalery()
-    
     var setupAlert: ((UIAlertController) -> Void)? { get set }
     var setupPicker: ((PHPickerViewController) -> Void)? { get set }
-    
 }
-
+    //MARK: - class
 final class DefaultAddNewFilmViewModal: AddNewFilmViewModel {
     
+    //MARK: - colocure
     var saveNewFilmColosure: ((UIAlertController) -> Void)?
     var transitionNameView: ((FilmNameView) -> Void)?
     var transitionRatingView: ((RatingDataPikerView) -> Void)?
     var transitionReleaseView: ((ReleaseDataPickerView) -> Void)?
     var transitionYoutubeView: ((YoutubeView) -> Void)?
-    
     var setupAlert: ((UIAlertController) -> Void)?
     var setupPicker: ((PHPickerViewController) -> Void)?
     
+    //MARK: - methods
     func openAlertButtonTapped() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: { _ in
@@ -52,6 +53,7 @@ final class DefaultAddNewFilmViewModal: AddNewFilmViewModel {
         let picker = PHPickerViewController(configuration: configuretor)
         setupPicker?(picker)
     }
+    
     func changeNameView() {
         let filmNameView = FilmNameView()
         let filmNameViewModel = DefaultFilmNameViewModal()
@@ -101,7 +103,6 @@ final class DefaultAddNewFilmViewModal: AddNewFilmViewModel {
         let result = CoreDataManager.instance.saveMovie(imageFilm: imageFilm, filmName: nameFilm, reating: retingFilm, releaseData: releasData, youtubeLink: youtube, descriptionFilm: description)
         
         saveNewFilmColosure?(alertSuccses)
-        
     }
 }
 
