@@ -11,7 +11,7 @@ final class CoreDataManager {
     
     //MARK: - singltone
     static let instance = CoreDataManager()
-    init() { }
+    private init() { }
     
     //MARK: - save method
     func saveMovie(imageFilm: Data, filmName: String, reating: String, releaseData: String, youtubeLink: String, descriptionFilm: String) -> Result<Void, CoreDataError> {

@@ -14,7 +14,7 @@ final class FullInfoFilmView: UIViewController {
     private let starImage = UIImageView(image: UIImage(systemName: "star.fill"))
     private let retingLabel = UILabel()
     private let releaseDataLeble = UILabel()
-    let dataFormater = DateFormatter()
+    private let dataFormater = DateFormatter()
     private let defaultRetingLabel = UILabel()
 
     

@@ -1,6 +1,6 @@
 import UIKit
 
-class CastomTableViewCell: UITableViewCell {
+final class CastomTableViewCell: UITableViewCell {
     
     //MARK: - propertis
     private let contenerView = UIView()
