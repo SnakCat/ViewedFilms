@@ -21,3 +21,7 @@ An application in which you can record interesting movies.
 - Rating
 - Video teaser
 - Description
+
+![image alt](https://github.com/SnakCat/ViewedFilms/blob/main/mainTable.png)
+![image alt](https://github.com/SnakCat/ViewedFilms/blob/main/infoMovie.png)
+![image alt](https://github.com/SnakCat/ViewedFilms/blob/main/addMovie.png)
